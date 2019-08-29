@@ -5,7 +5,7 @@ import { HttpClient } from  '@angular/common/http';
 // import { Observable } from 'rxjs/Observable';  
 // import 'rxjs/add/operator/map';  
 // import 'rxjs/add/operator/do';  
-var baseURL = "http://localhost:3000" 
+var baseURL = "http://localhost:3000/api/v1" 
 
 @Injectable()  
 export class ApiService {  
@@ -20,7 +20,10 @@ sendContact(contacts){
 getContactInfo(){      
      return this.http.get(baseURL+'/contact')  
                
-  }  
+  }
+  searchContacts( keyword) {
+    return this.http.get<any>(baseURL + '/searchcontact?email=' + keyword+'&mobileNo=' + keyword);
+}
   
 
 
